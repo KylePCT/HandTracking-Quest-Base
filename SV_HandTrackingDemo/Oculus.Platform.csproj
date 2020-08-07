@@ -246,10 +246,10 @@
     <Compile Include="Assets\Oculus\Platform\Scripts\WindowsPlatform.cs" />
     <None Include="Assets\Oculus\Platform\Oculus.Platform.asmdef" />
     <Reference Include="UnityEditor.UI">
-      <HintPath>C:/Users/KT/Desktop/SV_HandTrackingQuest/SV_HandTrackingDemo/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>C:/Users/KT/Desktop/SV_HandTrackingQuest/SV_HandTrackingQuestBase/SV_HandTrackingDemo/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>C:/Users/KT/Desktop/SV_HandTrackingQuest/SV_HandTrackingDemo/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>C:/Users/KT/Desktop/SV_HandTrackingQuest/SV_HandTrackingQuestBase/SV_HandTrackingDemo/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.13f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
