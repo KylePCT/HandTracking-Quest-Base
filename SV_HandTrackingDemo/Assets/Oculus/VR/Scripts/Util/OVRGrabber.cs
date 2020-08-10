@@ -279,12 +279,20 @@ public class OVRGrabber : MonoBehaviour
             // Set up offsets for grabbed object desired position relative to hand.
             if(m_grabbedObj.snapPosition)
             {
-                m_grabbedObjectPosOff = m_gripTransform.localPosition;
-                if(m_grabbedObj.snapOffset)
+                if (m_grabbedObj.snapOffset)
                 {
-                    Vector3 snapOffset = m_grabbedObj.snapOffset.position;
-                    if (m_controller == OVRInput.Controller.LTouch) snapOffset.x = -snapOffset.x;
-                    m_grabbedObjectPosOff += snapOffset;
+                    Vector3 snapOffset = -m_grabbedObj.snapOffset.localPosition;
+                    Vector3 snapOffsetScale = m_grabbedObj.snapOffset.lossyScale;
+                    snapOffset = new Vector3(snapOffset.x * snapOffsetScale.x, snapOffset.y * snapOffsetScale.y, snapOffset.z * snapOffsetScale.z);
+                    if (m_controller == OVRInput.Controller.LTouch)
+                    {
+                        snapOffset.x = -snapOffset.x;
+                    }
+                    m_grabbedObjectPosOff = snapOffset;
+                }
+                else
+                {
+                    m_grabbedObjectPosOff = Vector3.zero;
                 }
             }
             else
@@ -296,10 +304,13 @@ public class OVRGrabber : MonoBehaviour
 
             if (m_grabbedObj.snapOrientation)
             {
-                m_grabbedObjectRotOff = m_gripTransform.localRotation;
-                if(m_grabbedObj.snapOffset)
+                if (m_grabbedObj.snapOffset)
                 {
-                    m_grabbedObjectRotOff = m_grabbedObj.snapOffset.rotation * m_grabbedObjectRotOff;
+                    m_grabbedObjectRotOff = Quaternion.Inverse(m_grabbedObj.snapOffset.localRotation);
+                }
+                else
+                {
+                    m_grabbedObjectRotOff = Quaternion.identity;
                 }
             }
             else
@@ -313,6 +324,7 @@ public class OVRGrabber : MonoBehaviour
             // is beyond the scope of this demo.
             MoveGrabbedObject(m_lastPos, m_lastRot, true);
             SetPlayerIgnoreCollision(m_grabbedObj.gameObject, true);
+
             if (m_parentHeldObject)
             {
                 m_grabbedObj.transform.parent = transform;
@@ -347,19 +359,29 @@ public class OVRGrabber : MonoBehaviour
     {
         if (m_grabbedObj != null)
         {
-			OVRPose localPose = new OVRPose { position = OVRInput.GetLocalControllerPosition(m_controller), orientation = OVRInput.GetLocalControllerRotation(m_controller) };
-            OVRPose offsetPose = new OVRPose { position = m_anchorOffsetPosition, orientation = m_anchorOffsetRotation };
-            localPose = localPose * offsetPose;
+            //OVRPose localPose = new OVRPose { position = OVRInput.GetLocalControllerPosition(m_controller), orientation = OVRInput.GetLocalControllerRotation(m_controller) };
+            //OVRPose offsetPose = new OVRPose { position = m_anchorOffsetPosition, orientation = m_anchorOffsetRotation };
+            //localPose = localPose * offsetPose;
 
-			OVRPose trackingSpace = transform.ToOVRPose() * localPose.Inverse();
-			Vector3 linearVelocity = trackingSpace.orientation * OVRInput.GetLocalControllerVelocity(m_controller);
-			Vector3 angularVelocity = trackingSpace.orientation * OVRInput.GetLocalControllerAngularVelocity(m_controller);
+            //OVRPose trackingSpace = transform.ToOVRPose() * localPose.Inverse();
+            //Vector3 linearVelocity = trackingSpace.orientation * OVRInput.GetLocalControllerVelocity(m_controller);
 
-            GrabbableRelease(linearVelocity, angularVelocity);
+            //Vector3 angularVelocity = trackingSpace.orientation * OVRInput.GetLocalControllerAngularVelocity(m_controller);
+
+            //GrabbableRelease(linearVelocity, angularVelocity);
+
+            //m_grabbedObj.GetComponent<Rigidbody>().isKinematic = false;
+            //m_grabbedObj.transform.SetParent(null);
+
+
+            m_grabbedObj.transform.parent = null;
+
+
         }
 
         // Re-enable grab volumes to allow overlap events
         GrabVolumeEnable(true);
+
     }
 
     protected void GrabbableRelease(Vector3 linearVelocity, Vector3 angularVelocity)
