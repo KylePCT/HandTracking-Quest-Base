@@ -6,7 +6,7 @@ using OculusSampleFramework;
 public class HandTrackingGrab : OVRGrabber
 {
     private OVRHand hand;
-    private float pinchThreshold = 0.7f;
+    public float pinchThreshold = 0.7f;
 
     protected override void Start()
     {
@@ -37,5 +37,17 @@ public class HandTrackingGrab : OVRGrabber
         {
             GrabEnd();
         }
+    }
+
+    protected override void GrabEnd()
+    {
+        if (m_grabbedObj)
+        {
+            Vector3 linearVelocity = (transform.parent.position - m_lastPos) / Time.fixedDeltaTime;
+            Vector3 angularVelocity = (transform.parent.eulerAngles - m_lastRot.eulerAngles) / Time.fixedDeltaTime;
+
+            GrabbableRelease(linearVelocity, angularVelocity);
+        }
+        GrabVolumeEnable(true);
     }
 }
