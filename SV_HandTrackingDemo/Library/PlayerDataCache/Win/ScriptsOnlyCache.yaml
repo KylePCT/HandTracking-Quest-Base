@@ -2,25 +2,46 @@ ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
     - GestureDetection
+    - HandTrackingGrab
     - ONSPSettings
-    - OculusSampleFramework.HandsManager
+    - pageSystem
     Oculus.VR.Editor.dll:
     - Assets.Oculus.VR.Editor.OVRPlatformToolSettings
     - OVRConfig
     Oculus.VR.dll:
+    - OVRAutoDestroyInMRC
     - OVRCameraRig
+    - OVRDebugInfo
+    - OVRGrabbable
     - OVRHand
     - OVRHeadsetEmulator
     - OVRManager
     - OVRMesh
     - OVRMeshRenderer
+    - OVRPlayerController
+    - OVRSceneSampleController
+    - OVRScreenFade
     - OVRSkeleton
     - OVRSkeletonRenderer
+    Unity.TextMeshPro.dll:
+    - TMPro.TMP_FontAsset
+    - TMPro.TMP_Settings
+    - TMPro.TMP_SpriteAsset
+    - TMPro.TMP_StyleSheet
+    - TMPro.TextMeshProUGUI
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
+    UnityEngine.UI.dll:
+    - UnityEngine.EventSystems.EventSystem
+    - UnityEngine.EventSystems.StandaloneInputModule
+    - UnityEngine.UI.Button
+    - UnityEngine.UI.CanvasScaler
+    - UnityEngine.UI.GraphicRaycaster
+    - UnityEngine.UI.Image
+    - UnityEngine.UI.Text
   sceneClasses:
-    Assets/HandTracking.unity:
+    Assets/Scenes/HandTracking.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -39,9 +60,19 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 48
       Script: {instanceID: 0}
+    - Class: 49
+      Script: {instanceID: 0}
+    - Class: 54
+      Script: {instanceID: 0}
+    - Class: 59
+      Script: {instanceID: 0}
+    - Class: 64
+      Script: {instanceID: 0}
     - Class: 65
       Script: {instanceID: 0}
     - Class: 81
+      Script: {instanceID: 0}
+    - Class: 102
       Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
@@ -50,36 +81,90 @@ ScriptsOnlyBuild:
     - Class: 109
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 9908}
+      Script: {instanceID: 9868}
     - Class: 114
-      Script: {instanceID: 9918}
+      Script: {instanceID: 9938}
     - Class: 114
-      Script: {instanceID: 10056}
+      Script: {instanceID: 9948}
     - Class: 114
-      Script: {instanceID: 10530}
+      Script: {instanceID: 10086}
     - Class: 114
-      Script: {instanceID: 10594}
+      Script: {instanceID: 10110}
     - Class: 114
-      Script: {instanceID: 10610}
+      Script: {instanceID: 10170}
     - Class: 114
-      Script: {instanceID: 10834}
+      Script: {instanceID: 10304}
     - Class: 114
-      Script: {instanceID: 11226}
+      Script: {instanceID: 10500}
     - Class: 114
-      Script: {instanceID: 11316}
+      Script: {instanceID: 10624}
     - Class: 114
-      Script: {instanceID: 11838}
+      Script: {instanceID: 10640}
     - Class: 114
-      Script: {instanceID: 12038}
+      Script: {instanceID: 10738}
     - Class: 114
-      Script: {instanceID: 12114}
+      Script: {instanceID: 10782}
     - Class: 114
-      Script: {instanceID: 12516}
+      Script: {instanceID: 10828}
+    - Class: 114
+      Script: {instanceID: 10864}
+    - Class: 114
+      Script: {instanceID: 11008}
+    - Class: 114
+      Script: {instanceID: 11122}
+    - Class: 114
+      Script: {instanceID: 11202}
+    - Class: 114
+      Script: {instanceID: 11256}
+    - Class: 114
+      Script: {instanceID: 11286}
+    - Class: 114
+      Script: {instanceID: 11344}
+    - Class: 114
+      Script: {instanceID: 11346}
+    - Class: 114
+      Script: {instanceID: 11664}
+    - Class: 114
+      Script: {instanceID: 11682}
+    - Class: 114
+      Script: {instanceID: 11686}
+    - Class: 114
+      Script: {instanceID: 11868}
+    - Class: 114
+      Script: {instanceID: 11944}
+    - Class: 114
+      Script: {instanceID: 12022}
+    - Class: 114
+      Script: {instanceID: 12066}
+    - Class: 114
+      Script: {instanceID: 12142}
+    - Class: 114
+      Script: {instanceID: 12246}
+    - Class: 114
+      Script: {instanceID: 12542}
+    - Class: 114
+      Script: {instanceID: 12546}
     - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
+    - Class: 135
+      Script: {instanceID: 0}
+    - Class: 136
       Script: {instanceID: 0}
     - Class: 137
       Script: {instanceID: 0}
+    - Class: 143
+      Script: {instanceID: 0}
     - Class: 157
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
       Script: {instanceID: 0}
   scriptHashData:
   - hash:
@@ -318,7 +403,7 @@ ScriptsOnlyBuild:
     className: TMP_InputField
   - hash:
       serializedVersion: 2
-      Hash: 7ffa5a0944fe3f23d99ec567ae7ae898
+      Hash: c31603324da275845ef0e334c0da7196
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: CharacterCameraConstraint
@@ -490,6 +575,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.XR.LegacyInputHelpers.dll
     namespaceName: UnityEngine.XR.LegacyInputHelpers
     className: TransitionArmModel
+  - hash:
+      serializedVersion: 2
+      Hash: 4c99ee0145faab3931c9377720ed7e38
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: HandTrackingGrab
   - hash:
       serializedVersion: 2
       Hash: 5ab533713adae59372fb3e10a585c186
@@ -910,6 +1001,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: LocomotionController
+  - hash:
+      serializedVersion: 2
+      Hash: 1c68602c6cb03278409819445cb5f204
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: pageSystem
   - hash:
       serializedVersion: 2
       Hash: 45f2a4e63a8b43166e3f85c4d543f00d
@@ -1710,5 +1807,5 @@ ScriptsOnlyBuild:
     className: PlayableTrack
   platform: 5
   scenePathNames:
-  - Assets/HandTracking.unity
-  playerPath: C:/Users/KT/Desktop/SV_HandTrackingQuest/SV_HandTrackingDemo/SV_HandTrackingDemo.exe
+  - Assets/Scenes/HandTracking.unity
+  playerPath: C:/Users/KT/Desktop/SV_HandTrackingQuest/SV_HandTrackingQuestBase/SV_HandTrackingDemo/SV_HandTrackingDemo.exe

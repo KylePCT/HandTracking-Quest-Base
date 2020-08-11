@@ -258,3 +258,7 @@ C:\Users\KT\Desktop\SV_HandTrackingQuest\SV_HandTrackingDemo\obj\Debug\Oculus.VR
 C:\Users\KT\Desktop\SV_HandTrackingQuest\SV_HandTrackingDemo\obj\Debug\Oculus.VR.csproj.CopyComplete
 C:\Users\KT\Desktop\SV_HandTrackingQuest\SV_HandTrackingDemo\obj\Debug\Oculus.VR.dll
 C:\Users\KT\Desktop\SV_HandTrackingQuest\SV_HandTrackingDemo\obj\Debug\Oculus.VR.pdb
+C:\Users\KT\Desktop\SV_HandTrackingQuest\SV_HandTrackingQuestBase\SV_HandTrackingDemo\obj\Debug\Oculus.VR.csprojAssemblyReference.cache
+C:\Users\KT\Desktop\SV_HandTrackingQuest\SV_HandTrackingQuestBase\SV_HandTrackingDemo\obj\Debug\Oculus.VR.csproj.CoreCompileInputs.cache
+C:\Users\KT\Desktop\SV_HandTrackingQuest\SV_HandTrackingQuestBase\SV_HandTrackingDemo\obj\Debug\Oculus.VR.dll
+C:\Users\KT\Desktop\SV_HandTrackingQuest\SV_HandTrackingQuestBase\SV_HandTrackingDemo\obj\Debug\Oculus.VR.pdb

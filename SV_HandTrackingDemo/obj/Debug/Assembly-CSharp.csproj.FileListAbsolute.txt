@@ -1,2 +1,4 @@
 C:\Users\KT\Desktop\SV_HandTrackingQuest\SV_HandTrackingDemo\obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache
 C:\Users\KT\Desktop\SV_HandTrackingQuest\SV_HandTrackingDemo\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache
+C:\Users\KT\Desktop\SV_HandTrackingQuest\SV_HandTrackingQuestBase\SV_HandTrackingDemo\obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache
+C:\Users\KT\Desktop\SV_HandTrackingQuest\SV_HandTrackingQuestBase\SV_HandTrackingDemo\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache

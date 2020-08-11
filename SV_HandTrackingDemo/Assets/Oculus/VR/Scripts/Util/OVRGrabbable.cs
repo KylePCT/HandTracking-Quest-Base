@@ -32,14 +32,17 @@ public class OVRGrabbable : MonoBehaviour
     protected Transform m_snapOffset;
     [SerializeField]
     protected Collider[] m_grabPoints = null;
+    [SerializeField]
+    private bool isKinematic = true;
 
     protected bool m_grabbedKinematic = false;
     protected Collider m_grabbedCollider = null;
     protected OVRGrabber m_grabbedBy = null;
 
-	/// <summary>
-	/// If true, the object can currently be grabbed.
-	/// </summary>
+
+    /// <summary>
+    /// If true, the object can currently be grabbed.
+    /// </summary>
     public bool allowOffhandGrab
     {
         get { return m_allowOffhandGrab; }
@@ -116,7 +119,11 @@ public class OVRGrabbable : MonoBehaviour
     {
         m_grabbedBy = hand;
         m_grabbedCollider = grabPoint;
-        gameObject.GetComponent<Rigidbody>().isKinematic = true;
+
+        if (isKinematic)
+        {
+            gameObject.GetComponent<Rigidbody>().isKinematic = true;
+        }
     }
 
 	/// <summary>
@@ -129,7 +136,7 @@ public class OVRGrabbable : MonoBehaviour
         rb.velocity = linearVelocity;
         rb.angularVelocity = angularVelocity;
         m_grabbedBy = null;
-        m_grabbedCollider = null;
+        //m_grabbedCollider = null;
     }
 
     void Awake()
