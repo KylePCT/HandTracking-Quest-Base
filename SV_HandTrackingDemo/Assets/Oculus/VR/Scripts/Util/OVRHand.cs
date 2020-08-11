@@ -102,6 +102,7 @@ public class OVRHand : MonoBehaviour,
 
 			IsDataValid = true;
 			IsDataHighConfidence = IsTracked && HandConfidence == TrackingConfidence.High;
+
 		}
 		else
 		{
@@ -115,8 +116,8 @@ public class OVRHand : MonoBehaviour,
 
 			IsDataValid = false;
 			IsDataHighConfidence = false;
-		}
-	}
+        }
+    }
 
 	public bool GetFingerIsPinching(HandFinger finger)
 	{
@@ -141,10 +142,10 @@ public class OVRHand : MonoBehaviour,
 			&& _handState.FingerConfidences != null
 			&& _handState.FingerConfidences.Length == (int)OVRPlugin.HandFinger.Max)
 		{
-			return (TrackingConfidence)_handState.FingerConfidences[(int)finger];
+            return (TrackingConfidence)_handState.FingerConfidences[(int)finger];
 		}
 
-		return TrackingConfidence.Low;
+        return TrackingConfidence.Low;
 	}
 
 	OVRSkeleton.SkeletonType OVRSkeleton.IOVRSkeletonDataProvider.GetSkeletonType()
