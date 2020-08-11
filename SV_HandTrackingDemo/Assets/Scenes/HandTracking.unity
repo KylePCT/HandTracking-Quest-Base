@@ -763,7 +763,6 @@ Transform:
   - {fileID: 80167178}
   - {fileID: 1958825820}
   - {fileID: 798820764}
-  - {fileID: 1783949249}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1737,7 +1736,7 @@ Transform:
   m_Children:
   - {fileID: 196094004}
   m_Father: {fileID: 1616529649}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1310703749
 GameObject:
@@ -2058,7 +2057,7 @@ Transform:
   m_Children:
   - {fileID: 1480006054}
   m_Father: {fileID: 1616529649}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1428205271
 Rigidbody:
@@ -2111,7 +2110,7 @@ Transform:
   m_LocalScale: {x: 0.04945352, y: 0.036424886, z: 0.036424886}
   m_Children: []
   m_Father: {fileID: 1616529649}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1453946557
 MonoBehaviour:
@@ -2155,7 +2154,7 @@ ConfigurableJoint:
     spring: 0
     damper: 0
   m_LinearLimit:
-    limit: 0.4
+    limit: 0.1
     bounciness: 0
     contactDistance: 0
   m_AngularXLimitSpring:
@@ -2185,7 +2184,7 @@ ConfigurableJoint:
   m_XDrive:
     serializedVersion: 3
     positionSpring: 0
-    positionDamper: 2
+    positionDamper: 0.5
     maximumForce: 3.4028233e+38
   m_YDrive:
     serializedVersion: 3
@@ -2222,7 +2221,7 @@ ConfigurableJoint:
   m_SwapBodies: 0
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
-  m_EnableCollision: 1
+  m_EnableCollision: 0
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
@@ -2310,11 +2309,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1453946555}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a104569f1baa2f418f70444670417f3, type: 3}
+  m_Script: {fileID: 11500000, guid: 5cfc95afcfd1ae64486d4c94c60464c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  angleBetweenThreshold: 1
-  hingeJointState: 0
+  ConfigJoint_Obj: {fileID: 1453946555}
   OnMinLimitReached:
     m_PersistentCalls:
       m_Calls:
@@ -2345,8 +2343,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  isHingeJoint: 0
-  isConfigurableJoint: 1
 --- !u!1001 &1469086919
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2568,7 +2564,7 @@ Transform:
   m_LocalScale: {x: 0.08349822, y: 0.023448627, z: 0.023448627}
   m_Children: []
   m_Father: {fileID: 1616529649}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!59 &1513538881
 HingeJoint:
@@ -2601,7 +2597,7 @@ HingeJoint:
     contactDistance: 0
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
-  m_EnableCollision: 1
+  m_EnableCollision: 0
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
@@ -2651,6 +2647,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a104569f1baa2f418f70444670417f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isHingeJoint: 1
   angleBetweenThreshold: 1
   hingeJointState: 0
   OnMinLimitReached:
@@ -2683,8 +2680,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  isHingeJoint: 1
-  isConfigurableJoint: 0
 --- !u!1 &1550361922
 GameObject:
   m_ObjectHideFlags: 0
@@ -3103,6 +3098,7 @@ Transform:
   m_LocalPosition: {x: 1.9353302, y: 0.95731175, z: -2.09949}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1783949249}
   - {fileID: 1683332985}
   - {fileID: 1428205270}
   - {fileID: 1243272596}
@@ -3201,7 +3197,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1616529649}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1783949247
 GameObject:
@@ -3669,8 +3665,8 @@ Transform:
   m_LocalPosition: {x: 1.831145, y: -0.5916339, z: -0.44497275}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 326783993}
-  m_RootOrder: 3
+  m_Father: {fileID: 1616529649}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1901471801
 GameObject:
@@ -3937,7 +3933,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.985
+      value: 1.045
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3987,9 +3983,21 @@ PrefabInstance:
       propertyPath: _trackingOriginType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
+      propertyPath: usePositionTracking
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 14300000, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
       propertyPath: m_Radius
       value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 400008, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.106
+      objectReference: {fileID: 0}
+    - target: {fileID: 400008, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.175
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
