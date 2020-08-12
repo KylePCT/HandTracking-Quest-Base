@@ -39,6 +39,11 @@ public class OVRGrabbable : MonoBehaviour
     protected Collider m_grabbedCollider = null;
     protected OVRGrabber m_grabbedBy = null;
 
+    [Header("Snap Objects to Snap Points")]
+    public bool isSnappable;
+    public GameObject ghostGuide;
+    public Material ghostMat;
+    private bool guideEntered = false;
 
     /// <summary>
     /// If true, the object can currently be grabbed.
@@ -112,10 +117,26 @@ public class OVRGrabbable : MonoBehaviour
         get { return m_grabPoints; }
     }
 
-	/// <summary>
-	/// Notifies the object that it has been grabbed.
-	/// </summary>
-	virtual public void GrabBegin(OVRGrabber hand, Collider grabPoint)
+    private void OnTriggerEnter(Collider other)
+    {
+        if (ghostGuide)
+        {
+            guideEntered = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (ghostGuide)
+        {
+            guideEntered = false;
+        }
+    }
+
+    /// <summary>
+    /// Notifies the object that it has been grabbed.
+    /// </summary>
+    virtual public void GrabBegin(OVRGrabber hand, Collider grabPoint)
     {
         m_grabbedBy = hand;
         m_grabbedCollider = grabPoint;
@@ -123,6 +144,11 @@ public class OVRGrabbable : MonoBehaviour
         if (isKinematic)
         {
             gameObject.GetComponent<Rigidbody>().isKinematic = true;
+        }
+
+        if (isSnappable)
+        {
+            ghostGuide.SetActive(true);
         }
     }
 
@@ -137,6 +163,23 @@ public class OVRGrabbable : MonoBehaviour
         rb.angularVelocity = angularVelocity;
         m_grabbedBy = null;
         //m_grabbedCollider = null;
+
+        if (isSnappable)
+        {
+            if (guideEntered)
+            {
+                transform.position = ghostGuide.transform.position;
+                transform.rotation = ghostGuide.transform.rotation;
+
+                Destroy(GetComponent<OVRGrabbable>());
+                Destroy(ghostGuide);
+            }
+
+            ghostGuide.SetActive(false);
+        }
+
+
+
     }
 
     void Awake()
@@ -158,6 +201,14 @@ public class OVRGrabbable : MonoBehaviour
     protected virtual void Start()
     {
         m_grabbedKinematic = GetComponent<Rigidbody>().isKinematic;
+
+        if (isSnappable == true)
+        {
+            ghostGuide.GetComponent<Renderer>().material = ghostMat;
+            ghostGuide.SetActive(false);
+
+            guideEntered = false;
+        }
     }
 
     //void OnDestroy()

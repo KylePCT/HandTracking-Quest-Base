@@ -24,7 +24,7 @@ public class pageSystem : MonoBehaviour
         public int pageNumber;
         public string pageTitle;
         [TextArea(5, 10)] public string pageInstructions; //textarea allows for bigger area to type
-        public Image pageImage;
+        public Sprite pageImage;
         public bool taskComplete;
 
         [HideInInspector]
@@ -79,19 +79,21 @@ public class pageSystem : MonoBehaviour
     private void OnEnable()
     {
         //set the page to display the first page values (home page)
-        tempPageNumber.text = instructionPages[0].pageNumber.ToString();
+        tempPageNumber.text = instructionPages[0].pageNumber.ToString() + " of " + instructionPages.Length.ToString();
         tempPageTitle.text = instructionPages[0].pageTitle;
         tempPageDescription.text = instructionPages[0].pageInstructions;
-        tempPageImage = instructionPages[0].pageImage;
+        tempPageImage.sprite = instructionPages[0].pageImage;
+
+        prevBtn.interactable = false;
     }
 
     //using SetPage we can set the parameters to be correct for what page we need i.e. 'index'
     private void SetPage(int index)
     {
-        tempPageNumber.text = instructionPages[index].pageNumber.ToString();
+        tempPageNumber.text = instructionPages[index].pageNumber.ToString() + " of " + instructionPages.Length.ToString();
         tempPageTitle.text = instructionPages[index].pageTitle;
         tempPageDescription.text = instructionPages[index].pageInstructions;
-        tempPageImage = instructionPages[index].pageImage;
+        tempPageImage.sprite = instructionPages[index].pageImage;
 
         pageIndex = index;
     }
@@ -106,6 +108,17 @@ public class pageSystem : MonoBehaviour
         //lower the index by 1 
         pageIndex--;
 
+        //if its 0 after lowering the index, make the button uninteractable
+        if (pageIndex == 0)
+        {
+            prevBtn.interactable = false;
+        }
+
+        else
+        {
+            prevBtn.interactable = true;
+        }
+
         //set the page
         SetPage(pageIndex);
     }
@@ -114,11 +127,26 @@ public class pageSystem : MonoBehaviour
     {
         Debug.Log("Clicked 'Next Page'.");
 
+
         //if the array is trying to look for a page higher than the pages set, it wont find it due to not existing, so cancel
         if (pageIndex == instructionPages.Length - 1) return;
 
+        //if next is pressed, prev must become available and interactable
+        prevBtn.interactable = true;
+
         //raise the index by 1
         pageIndex++;
+
+        //check after index raised
+        if (pageIndex == instructionPages.Length - 1)
+        {
+            //if its the last array, make the next button uninteractable
+            nextBtn.interactable = false;
+        }
+        else
+        {
+            nextBtn.interactable = true;
+        }
 
         //set the page
         SetPage(pageIndex);
@@ -133,5 +161,7 @@ public class pageSystem : MonoBehaviour
 
         //reset index
         pageIndex = 0;
+        prevBtn.interactable = false;
+        nextBtn.interactable = true;
     }
 }
