@@ -6,10 +6,12 @@ using UnityEngine.Events;
 public class LinearLimitListener : MonoBehaviour
 {
     public GameObject ConfigJoint_Obj;
+    private ConfigurableJoint configJoint;
 
     private Vector3 initialPos;
     private Vector3 endPos;
     private float linearLimit;
+
 
     //Event called on min reached
     public UnityEvent OnMinLimitReached;
@@ -19,12 +21,14 @@ public class LinearLimitListener : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        initialPos = ConfigJoint_Obj.transform.position;
+        initialPos = transform.position;
 
-        linearLimit = ConfigJoint_Obj.GetComponent<ConfigurableJoint>().linearLimit.limit;
+        linearLimit = GetComponent<ConfigurableJoint>().linearLimit.limit;
 
-        endPos = ConfigJoint_Obj.transform.position;
-        endPos.y = ConfigJoint_Obj.transform.position.y + linearLimit;
+        endPos = transform.position;
+        endPos.y = transform.position.y + linearLimit;
+
+        configJoint = GetComponent<ConfigurableJoint>();
     }
 
     // Update is called once per frame
@@ -32,7 +36,7 @@ public class LinearLimitListener : MonoBehaviour
     {
         //Debug.Log(initialPos + "" + endPos + "" + transform.position);
 
-        if (ConfigJoint_Obj.transform.position.x <= initialPos.x)
+        if (ConfigJoint_Obj.transform.position.x <= (initialPos.x / 4))
         {
             OnMinLimitReached.Invoke();
         }
@@ -46,5 +50,14 @@ public class LinearLimitListener : MonoBehaviour
         {
             return;
         }
+    }
+
+    public void stopMoving()
+    {
+        configJoint.xMotion = ConfigurableJointMotion.Locked;
+        configJoint.yMotion = ConfigurableJointMotion.Locked;
+        configJoint.zMotion = ConfigurableJointMotion.Locked;
+
+        ConfigJoint_Obj.transform.position = endPos;
     }
 }

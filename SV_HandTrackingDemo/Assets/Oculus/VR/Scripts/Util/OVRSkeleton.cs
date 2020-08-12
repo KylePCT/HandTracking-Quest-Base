@@ -97,8 +97,10 @@ public class OVRSkeleton : MonoBehaviour
 	private GameObject _bonesGO;
 	private GameObject _bindPosesGO;
 	private GameObject _capsulesGO;
+    private GameObject obj_HandIndexTip;
+    private bool tipColliderActive = false;
 
-	protected List<OVRBone> _bones;
+    protected List<OVRBone> _bones;
 	private List<OVRBone> _bindPoses;
 	private List<OVRBoneCapsule> _capsules;
 
@@ -232,7 +234,29 @@ public class OVRSkeleton : MonoBehaviour
 			{
 				_bindPoses[i].Transform.SetParent(_bindPoses[_bones[i].ParentBoneIndex].Transform, false);
 			}
-		}
+
+            Debug.Log(i);
+
+            if (i == 20 && !tipColliderActive)
+            {
+                //this is horribly inefficient but it works /shrug/
+                obj_HandIndexTip = GameObject.Find("RightControllerAnchor/OVRHandPrefab/Bones/Hand_Start/Hand_Index1/Hand_Index2/Hand_Index3/Hand_IndexTip");
+
+                var fingerTipCollider = new GameObject("fingerTip_Collider");
+                var tipCollider = fingerTipCollider.AddComponent<SphereCollider>();
+                fingerTipCollider.tag = "FingerTip";
+                fingerTipCollider.transform.position = obj_HandIndexTip.transform.position;
+
+                fingerTipCollider.transform.SetParent(obj_HandIndexTip.transform);
+
+                tipCollider.radius = 0.02f;
+                tipCollider.isTrigger = true;
+
+                tipColliderActive = true;
+                Debug.Log("[OVRSkeleton] Tip collision added.");  
+
+            }
+        }
 	}
 
 	private void InitializeCapsules(OVRPlugin.Skeleton skeleton)
@@ -286,7 +310,7 @@ public class OVRSkeleton : MonoBehaviour
 				capsuleCollider.center = Vector3.right * mag * 0.5f;
 
 				_capsules[i] = new OVRBoneCapsule(capsule.BoneIndex, capsuleRigidBody, capsuleCollider);
-			}
+            }
 		}
 	}
 
@@ -342,8 +366,8 @@ public class OVRSkeleton : MonoBehaviour
 					{
 						_bones[i].Transform.localRotation *= wristFixupRotation;
 					}
-				}
-			}
+                }
+            }
 		}
 	}
 
