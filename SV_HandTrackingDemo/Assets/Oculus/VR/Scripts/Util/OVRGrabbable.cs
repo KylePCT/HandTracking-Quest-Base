@@ -14,8 +14,11 @@ ANY KIND, either express or implied. See the License for the specific language g
 permissions and limitations under the License.
 ************************************************************************************/
 
-using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using System;
 
 /// <summary>
 /// An object that can be grabbed and thrown by OVRGrabber.
@@ -44,6 +47,8 @@ public class OVRGrabbable : MonoBehaviour
     public GameObject ghostGuide;
     public Material ghostMat;
     private bool guideEntered = false;
+
+    public bool isTaskComplete;
 
     /// <summary>
     /// If true, the object can currently be grabbed.
@@ -162,24 +167,23 @@ public class OVRGrabbable : MonoBehaviour
         rb.velocity = linearVelocity;
         rb.angularVelocity = angularVelocity;
         m_grabbedBy = null;
-        //m_grabbedCollider = null;
 
         if (isSnappable)
         {
-            if (guideEntered)
+            if (guideEntered && isTaskComplete == false)
             {
                 transform.position = ghostGuide.transform.position;
                 transform.rotation = ghostGuide.transform.rotation;
+                m_grabbedCollider = null;
+                m_grabPoints = null;
 
+                isTaskComplete = true;
                 Destroy(GetComponent<OVRGrabbable>());
                 Destroy(ghostGuide);
             }
 
             ghostGuide.SetActive(false);
         }
-
-
-
     }
 
     void Awake()
@@ -211,12 +215,12 @@ public class OVRGrabbable : MonoBehaviour
         }
     }
 
-    //void OnDestroy()
-    //{
-    //    if (m_grabbedBy != null)
-    //    {
-    //        // Notify the hand to release destroyed grabbables
-    //        m_grabbedBy.ForceRelease(this);
-    //    }
-    //}
+    void OnDestroy()
+    {
+        if (m_grabbedBy != null)
+        {
+            // Notify the hand to release destroyed grabbables
+            m_grabbedBy.ForceRelease(this);
+        }
+    }
 }

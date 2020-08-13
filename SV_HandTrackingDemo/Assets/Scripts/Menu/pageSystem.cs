@@ -35,7 +35,7 @@ public class pageSystem : MonoBehaviour
     private int pageIndex;
 
     //navigation buttons
-    public Button prevBtn, nextBtn, homeBtn;
+    public Button prevBtn, nextBtn, homeBtn, finishBtn;
 
     //pages list
     [SerializeField] Page[] instructionPages;
@@ -74,6 +74,9 @@ public class pageSystem : MonoBehaviour
         ///
         #endregion
 
+        prevBtn.interactable = false;
+        finishBtn.interactable = false;
+        finishBtn.GetComponent<BoxCollider>().enabled = false;
     }
 
     private void OnEnable()
@@ -83,8 +86,6 @@ public class pageSystem : MonoBehaviour
         tempPageTitle.text = instructionPages[0].pageTitle;
         tempPageDescription.text = instructionPages[0].pageInstructions;
         tempPageImage.sprite = instructionPages[0].pageImage;
-
-        prevBtn.interactable = false;
     }
 
     //using SetPage we can set the parameters to be correct for what page we need i.e. 'index'
@@ -142,6 +143,8 @@ public class pageSystem : MonoBehaviour
         {
             //if its the last array, make the next button uninteractable
             nextBtn.interactable = false;
+            finishBtn.interactable = true;
+            finishBtn.GetComponent<BoxCollider>().enabled = true;
         }
         else
         {

@@ -29,6 +29,8 @@ public class OVRGrabber : MonoBehaviour
 
     bool alreadyUpdated = false;
 
+    private GameObject fingerTip;
+
     // Demonstrates parenting the held object to the hand's transform when grabbed.
     // When false, the grabbed object is moved every FixedUpdate using MovePosition.
     // Note that MovePosition is required for proper physics simulation. If you set this to true, you can
@@ -371,7 +373,7 @@ public class OVRGrabber : MonoBehaviour
             GrabbableRelease(linearVelocity, angularVelocity);
 
             m_grabbedObj.transform.parent = null;
-
+            m_grabbedObj = null;
 
         }
 
