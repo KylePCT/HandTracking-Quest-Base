@@ -28,6 +28,7 @@ public class pokeButtonInteraction : MonoBehaviour
     {
         if (other.tag == "FingerTip" && currentlyPoked == false)
         {
+            attachedButton.image.color = Color.red;
             whenPoked.Invoke();
             currentlyPoked = true;
         }
@@ -37,6 +38,7 @@ public class pokeButtonInteraction : MonoBehaviour
     {
         if (other.tag == "FingerTip" && currentlyPoked == true)
         {
+            attachedButton.image.color = Color.white;
             currentlyPoked = false;
         }
     }

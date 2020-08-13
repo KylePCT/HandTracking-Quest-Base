@@ -18,6 +18,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 using System;
 
 /// <summary>
@@ -48,6 +49,7 @@ public class OVRGrabbable : MonoBehaviour
     public Material ghostMat;
     private bool guideEntered = false;
 
+    public UnityEvent objsWithTasks;
     public bool isTaskComplete;
 
     /// <summary>
@@ -143,6 +145,7 @@ public class OVRGrabbable : MonoBehaviour
     /// </summary>
     virtual public void GrabBegin(OVRGrabber hand, Collider grabPoint)
     {
+        resetGrabPoints();
         m_grabbedBy = hand;
         m_grabbedCollider = grabPoint;
 
@@ -174,10 +177,8 @@ public class OVRGrabbable : MonoBehaviour
             {
                 transform.position = ghostGuide.transform.position;
                 transform.rotation = ghostGuide.transform.rotation;
-                m_grabbedCollider = null;
-                m_grabPoints = null;
 
-                isTaskComplete = true;
+                TaskComplete();
                 Destroy(GetComponent<OVRGrabbable>());
                 Destroy(ghostGuide);
             }
@@ -222,5 +223,28 @@ public class OVRGrabbable : MonoBehaviour
             // Notify the hand to release destroyed grabbables
             m_grabbedBy.ForceRelease(this);
         }
+    }
+
+    public void resetGrabPoints()
+    {
+        if (m_grabPoints.Length == 0)
+        {
+            // Get the collider from the grabbable
+            Collider collider = this.GetComponent<Collider>();
+            if (collider == null)
+            {
+                throw new ArgumentException("Grabbables cannot have zero grab points and no collider -- please add a grab point or collider.");
+            }
+
+            // Create a default grab point
+            m_grabPoints = new Collider[1] { collider };
+        }
+    }
+
+    public void TaskComplete()
+    {
+        isTaskComplete = true;
+        resetGrabPoints();
+        objsWithTasks.Invoke();
     }
 }

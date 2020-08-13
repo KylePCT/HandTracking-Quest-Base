@@ -1121,6 +1121,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 922063083}
+        m_MethodName: Reset
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &345684969
 GameObject:
   m_ObjectHideFlags: 0
@@ -1315,6 +1326,7 @@ MonoBehaviour:
   m_controller: 0
   m_parentTransform: {fileID: 0}
   m_player: {fileID: 2089499467}
+  scriptGrabbable: {fileID: 0}
   pinchThreshold: 0.9
 --- !u!54 &378302748
 Rigidbody:
@@ -1452,6 +1464,9 @@ MonoBehaviour:
   isSnappable: 0
   ghostGuide: {fileID: 0}
   ghostMat: {fileID: 2100000, guid: e1ce82b8ca1827043b22af136bf2180c, type: 2}
+  objsWithTasks:
+    m_PersistentCalls:
+      m_Calls: []
   isTaskComplete: 0
 --- !u!135 &413364687
 SphereCollider:
@@ -1546,6 +1561,7 @@ MonoBehaviour:
   m_controller: 0
   m_parentTransform: {fileID: 0}
   m_player: {fileID: 2089499467}
+  scriptGrabbable: {fileID: 0}
   pinchThreshold: 0.9
 --- !u!54 &554325644
 Rigidbody:
@@ -1662,6 +1678,20 @@ MonoBehaviour:
   isSnappable: 1
   ghostGuide: {fileID: 413364683}
   ghostMat: {fileID: 2100000, guid: e1ce82b8ca1827043b22af136bf2180c, type: 2}
+  objsWithTasks:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 922063083}
+        m_MethodName: PieceFinished
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   isTaskComplete: 0
 --- !u!135 &589371464
 SphereCollider:
@@ -1796,6 +1826,20 @@ MonoBehaviour:
   isSnappable: 1
   ghostGuide: {fileID: 1709963927}
   ghostMat: {fileID: 2100000, guid: e1ce82b8ca1827043b22af136bf2180c, type: 2}
+  objsWithTasks:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 922063083}
+        m_MethodName: PieceFinished
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   isTaskComplete: 0
 --- !u!135 &678132768
 SphereCollider:
@@ -2298,6 +2342,7 @@ GameObject:
   m_Component:
   - component: {fileID: 922063081}
   - component: {fileID: 922063082}
+  - component: {fileID: 922063083}
   m_Layer: 0
   m_Name: MenuManager
   m_TagString: Untagged
@@ -2346,62 +2391,26 @@ MonoBehaviour:
     pageTitle: 'VR Test: Place the balls'
     pageInstructions: Place the balls into the right place inside the machine.
     pageImage: {fileID: 21300000, guid: 871600bbe5c92eb45a948fe73ff8b1a3, type: 3}
+    moveableTaskObjects:
+    - {fileID: 589371460}
+    - {fileID: 678132764}
     taskComplete: 0
     pageTemplate: {fileID: 0}
-  - pageNumber: 2
-    pageTitle: taafsaf
-    pageInstructions: afsfasassafasfadsfasfasfasfasfasfafa
-    pageImage: {fileID: 21300000, guid: fd7cf88ee9b05f94f84bd7686a9669a6, type: 3}
-    taskComplete: 0
-    pageTemplate: {fileID: 0}
-  - pageNumber: 3
-    pageTitle: fafasffsa
-    pageInstructions: sfafasafsfasfasfasfasfsafasfsafasfas
-    pageImage: {fileID: 21300000, guid: 749615b78f067c442b8275980b7ed7c8, type: 3}
-    taskComplete: 0
-    pageTemplate: {fileID: 0}
-  - pageNumber: 4
-    pageTitle: 
-    pageInstructions: wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
-    pageImage: {fileID: 21300002, guid: f6e6acbe07068e448ada3d7aaeb72562, type: 3}
-    taskComplete: 0
-    pageTemplate: {fileID: 0}
-  - pageNumber: 5
-    pageTitle: 
-    pageInstructions: 
-    pageImage: {fileID: 0}
-    taskComplete: 0
-    pageTemplate: {fileID: 0}
-  - pageNumber: 6
-    pageTitle: 
-    pageInstructions: 
-    pageImage: {fileID: 0}
-    taskComplete: 0
-    pageTemplate: {fileID: 0}
-  - pageNumber: 7
-    pageTitle: 
-    pageInstructions: 
-    pageImage: {fileID: 0}
-    taskComplete: 0
-    pageTemplate: {fileID: 0}
-  - pageNumber: 8
-    pageTitle: 
-    pageInstructions: 
-    pageImage: {fileID: 0}
-    taskComplete: 0
-    pageTemplate: {fileID: 0}
-  - pageNumber: 9
-    pageTitle: 
-    pageInstructions: 
-    pageImage: {fileID: 0}
-    taskComplete: 0
-    pageTemplate: {fileID: 0}
-  - pageNumber: 10
-    pageTitle: 
-    pageInstructions: 
-    pageImage: {fileID: 0}
-    taskComplete: 0
-    pageTemplate: {fileID: 0}
+--- !u!114 &922063083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 922063080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ad50cffd3c47e7418bd46604f4e91bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextBtn: {fileID: 335152559}
+  pageSys: {fileID: 922063082}
+  timer: {fileID: 0}
 --- !u!1 &1149620508
 GameObject:
   m_ObjectHideFlags: 0
@@ -3151,7 +3160,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1513538876}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.1159, y: -0.8931, z: -0.2963}
+  m_LocalPosition: {x: -2.1159, y: -0.805, z: -0.2963}
   m_LocalScale: {x: 0.08349822, y: 0.023448627, z: 0.023448627}
   m_Children: []
   m_Father: {fileID: 1616529649}
@@ -3168,7 +3177,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0.5, z: 0}
   m_Axis: {x: 0, y: -1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.18056989, y: 0.07593602, z: -2.3957899}
+  m_ConnectedAnchor: {x: -0.18056989, y: 0.16403604, z: -2.3957899}
   m_UseSpring: 0
   m_Spring:
     spring: 0
@@ -3181,8 +3190,8 @@ HingeJoint:
     freeSpin: 0
   m_UseLimits: 1
   m_Limits:
-    min: -92.3
-    max: 94.356
+    min: -504.71036
+    max: -213.41458
     bounciness: 0
     bounceMinVelocity: 0.2
     contactDistance: 0
@@ -3225,11 +3234,14 @@ MonoBehaviour:
   m_snapOrientation: 0
   m_snapOffset: {fileID: 0}
   m_grabPoints:
-  - {fileID: 0}
+  - {fileID: 1513538877}
   isKinematic: 1
   isSnappable: 0
   ghostGuide: {fileID: 0}
   ghostMat: {fileID: 0}
+  objsWithTasks:
+    m_PersistentCalls:
+      m_Calls: []
   isTaskComplete: 0
 --- !u!114 &1513538884
 MonoBehaviour:
@@ -4042,6 +4054,9 @@ MonoBehaviour:
   isSnappable: 0
   ghostGuide: {fileID: 0}
   ghostMat: {fileID: 2100000, guid: e1ce82b8ca1827043b22af136bf2180c, type: 2}
+  objsWithTasks:
+    m_PersistentCalls:
+      m_Calls: []
   isTaskComplete: 0
 --- !u!135 &1709963931
 SphereCollider:
@@ -4911,7 +4926,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.110000014
+      value: -0.06
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
       propertyPath: m_LocalPosition.y

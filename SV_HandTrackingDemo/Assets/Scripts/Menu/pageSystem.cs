@@ -25,6 +25,7 @@ public class pageSystem : MonoBehaviour
         public string pageTitle;
         [TextArea(5, 10)] public string pageInstructions; //textarea allows for bigger area to type
         public Sprite pageImage;
+        public GameObject[] moveableTaskObjects;
         public bool taskComplete;
 
         [HideInInspector]
@@ -39,6 +40,8 @@ public class pageSystem : MonoBehaviour
 
     //pages list
     [SerializeField] Page[] instructionPages;
+
+    private TaskManager tasks;
 
     // Start is called before the first frame update
     void Start()
@@ -77,6 +80,11 @@ public class pageSystem : MonoBehaviour
         prevBtn.interactable = false;
         finishBtn.interactable = false;
         finishBtn.GetComponent<BoxCollider>().enabled = false;
+    }
+
+    public Page returnCurrentPage()
+    {
+        return instructionPages[pageIndex];
     }
 
     private void OnEnable()
@@ -128,7 +136,6 @@ public class pageSystem : MonoBehaviour
     {
         Debug.Log("Clicked 'Next Page'.");
 
-
         //if the array is trying to look for a page higher than the pages set, it wont find it due to not existing, so cancel
         if (pageIndex == instructionPages.Length - 1) return;
 
@@ -143,12 +150,9 @@ public class pageSystem : MonoBehaviour
         {
             //if its the last array, make the next button uninteractable
             nextBtn.interactable = false;
+            nextBtn.GetComponent<BoxCollider>().enabled = false;
             finishBtn.interactable = true;
             finishBtn.GetComponent<BoxCollider>().enabled = true;
-        }
-        else
-        {
-            nextBtn.interactable = true;
         }
 
         //set the page
@@ -165,6 +169,7 @@ public class pageSystem : MonoBehaviour
         //reset index
         pageIndex = 0;
         prevBtn.interactable = false;
-        nextBtn.interactable = true;
+
+        
     }
 }

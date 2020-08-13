@@ -226,6 +226,7 @@
     <Compile Include="Assets\Scripts\LinearLimitListener.cs" />
     <Compile Include="Assets\Scripts\Menu\pageSystem.cs" />
     <Compile Include="Assets\Scripts\Menu\pokeButtonInteraction.cs" />
+    <Compile Include="Assets\Scripts\TaskManager.cs" />
     <Compile Include="Assets\Scripts\Timer.cs" />
     <None Include="Assets\Oculus\SampleFramework\Usage\OVROverlayCanvas\Shaders\UI Prerendered Opaque.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
