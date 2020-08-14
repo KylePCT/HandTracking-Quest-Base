@@ -37,6 +37,7 @@ public class Timer : MonoBehaviour
     public void timerStart()
     {
         timerStarted = true;
+        theTimer = 0;
     }
 
     public void timerEnd()

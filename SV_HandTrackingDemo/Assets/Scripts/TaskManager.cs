@@ -32,10 +32,12 @@ public class TaskManager : MonoBehaviour
         }
     }
 
+    //Reset tasks
     public void Reset()
     {
         currentfinishedObjs = 0;
         taskCompleteObjs = pageSys.returnCurrentPage().moveableTaskObjects.Length;
+        timer.timerStart();
         nextBtn.interactable = false;
         nextBtn.GetComponent<BoxCollider>().enabled = false;
     }
