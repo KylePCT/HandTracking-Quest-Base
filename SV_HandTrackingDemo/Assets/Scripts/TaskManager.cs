@@ -10,8 +10,7 @@ public class TaskManager : MonoBehaviour
     int taskCompleteObjs;
 
     public pageSystem pageSys;
-    [HideInInspector] public Timer timer;
-    private OVRGrabbable isTaskComplete;
+    public Timer timer;
 
     private void Start()
     {
@@ -38,7 +37,6 @@ public class TaskManager : MonoBehaviour
         currentfinishedObjs = 0;
         taskCompleteObjs = pageSys.returnCurrentPage().moveableTaskObjects.Length;
         nextBtn.interactable = false;
-        nextBtn.GetComponent<BoxCollider>().enabled = true;
-        isTaskComplete.isTaskComplete = false;
+        nextBtn.GetComponent<BoxCollider>().enabled = false;
     }
 }

@@ -52,6 +52,7 @@ public class OVRGrabber : MonoBehaviour
     // Also used for ranking grab targets in case of multiple candidates.
     [SerializeField]
     protected Transform m_gripTransform = null;
+
     // Child/attached Colliders to detect candidate grabbable objects.
     [SerializeField]
     protected Collider[] m_grabVolumes = null;

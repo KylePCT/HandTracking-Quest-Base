@@ -15,9 +15,9 @@ public struct Gesture
 public class GestureDetection : MonoBehaviour
 {
     [Header("Enable Debug Mode to add Gestures using <G>.", order = 0)]
+    [Help("Make sure you are in <PLAY MODE>!", UnityEditor.MessageType.Error)]
     public bool debugMode = true;
 
-    [Header("- Make sure you are in <PLAY MODE>.", order = 1)]
     [Space(-10, order = 2)]
     [Header("- Once all gestures are recorded, <RIGHT-CLICK> the inspector", order = 3)]
     [Space(-10, order = 4)]

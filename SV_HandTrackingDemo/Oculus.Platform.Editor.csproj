@@ -62,11 +62,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Oculus\Platform\Editor\GUIHelper.cs" />
-    <Compile Include="Assets\Oculus\Platform\Editor\OculusPlatformSettingsEditor.cs" />
-    <Compile Include="Assets\Oculus\Platform\Editor\OculusPluginUpdaterStub.cs" />
-    <Compile Include="Assets\Oculus\Platform\Editor\OculusStandalonePlatformResponse.cs" />
-    <None Include="Assets\Oculus\Platform\Editor\Oculus.Platform.Editor.asmdef" />
+    <Compile Include="Assets\Plugins\Oculus\Platform\Editor\GUIHelper.cs" />
+    <Compile Include="Assets\Plugins\Oculus\Platform\Editor\OculusPlatformSettingsEditor.cs" />
+    <Compile Include="Assets\Plugins\Oculus\Platform\Editor\OculusPluginUpdaterStub.cs" />
+    <Compile Include="Assets\Plugins\Oculus\Platform\Editor\OculusStandalonePlatformResponse.cs" />
+    <None Include="Assets\Plugins\Oculus\Platform\Editor\Oculus.Platform.Editor.asmdef" />
     <Reference Include="UnityEditor.UI">
       <HintPath>C:/Users/KT/Desktop/SV_HandTrackingQuest/SV_HandTrackingQuestBase/SV_HandTrackingDemo/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>

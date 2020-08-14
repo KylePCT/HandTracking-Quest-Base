@@ -12,15 +12,19 @@ public class pageSystem : MonoBehaviour
     public GameObject pageTemplate;
 
     //assign the template parameters in the inspector for easy editing of values
+    [Help("These must contain the stated elements from the Template Page.", UnityEditor.MessageType.Warning)]
     [SerializeField] private TextMeshProUGUI tempPageNumber;
     [SerializeField] private TextMeshProUGUI tempPageTitle;
     [SerializeField] private TextMeshProUGUI tempPageDescription;
     [SerializeField] private Image tempPageImage;
 
     //struct to allow multiple customiseable serialized objects in the inspector
+
     [Serializable]
     public struct Page
     {
+        [SerializeField]
+        [Help("Set up the contents of your page here. Add your objects which must be interacted with into the 'Moveable Task Objects' box.")]
         public int pageNumber;
         public string pageTitle;
         [TextArea(5, 10)] public string pageInstructions; //textarea allows for bigger area to type
@@ -31,6 +35,7 @@ public class pageSystem : MonoBehaviour
         [HideInInspector]
         public GameObject pageTemplate;
     }
+
 
     //track the current page
     private int pageIndex;

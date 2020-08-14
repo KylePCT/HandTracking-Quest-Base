@@ -235,8 +235,6 @@ public class OVRSkeleton : MonoBehaviour
 				_bindPoses[i].Transform.SetParent(_bindPoses[_bones[i].ParentBoneIndex].Transform, false);
 			}
 
-            Debug.Log(i);
-
             if (i == 20 && !tipColliderActive)
             {
                 //this is horribly inefficient but it works /shrug/

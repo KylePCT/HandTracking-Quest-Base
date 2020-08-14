@@ -49,6 +49,9 @@ public class OVRGrabbable : MonoBehaviour
     public Material ghostMat;
     private bool guideEntered = false;
 
+    [Header("Drag 'PieceFinished' from MenuManager here.")]
+    [Space(-10)]
+    [Header("Use TaskComplete() to decide when this is called.")]
     public UnityEvent objsWithTasks;
     public bool isTaskComplete;
 
