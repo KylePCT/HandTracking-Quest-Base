@@ -70,6 +70,7 @@
     <Compile Include="Assets\Scripts\LinearLimitListener.cs" />
     <Compile Include="Assets\Scripts\Menu\pageSystem.cs" />
     <Compile Include="Assets\Scripts\Menu\pokeButtonInteraction.cs" />
+    <Compile Include="Assets\Scripts\RopeGen.cs" />
     <Compile Include="Assets\Scripts\TaskManager.cs" />
     <Compile Include="Assets\Scripts\Timer.cs" />
     <Reference Include="Unity.Timeline.Editor">

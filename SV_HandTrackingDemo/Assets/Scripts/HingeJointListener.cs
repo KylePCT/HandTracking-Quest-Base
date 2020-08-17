@@ -22,31 +22,38 @@ public class HingeJointListener : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Get the hinge component of the object.
         hinge = GetComponent<HingeJoint>();
     }
 
     private void FixedUpdate()
     {
+        //Calculate max/min angles.
         float angleWithMinLimit = Mathf.Abs(hinge.angle - hinge.limits.min);
         float angleWithMaxLimit = Mathf.Abs(hinge.angle - hinge.limits.max);
 
-        //Reached Min
+        //Reached Min value.
         if (angleWithMinLimit < angleBetweenThreshold)
         {
+            //If the state enters the min threshold, invoke.
             if (hingeJointState != HingeJointState.Min)
+            {
                 OnMinLimitReached.Invoke();
-
-            hingeJointState = HingeJointState.Min;
+                hingeJointState = HingeJointState.Min;
+            }
         }
-        //Reached Max
+        //Reached Max value.
         else if (angleWithMaxLimit < angleBetweenThreshold)
         {
             if (hingeJointState != HingeJointState.Max)
+            {
+                //When entering the max threshold, invoke.
                 OnMaxLimitReached.Invoke();
-
-            hingeJointState = HingeJointState.Max;
+                hingeJointState = HingeJointState.Max;
+            }
         }
-        //No Limit reached
+
+        //No limit reached.
         else
         {
             hingeJointState = HingeJointState.None;

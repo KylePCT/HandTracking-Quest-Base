@@ -7,19 +7,18 @@ using System;
 
 public class pageSystem : MonoBehaviour
 {
-    //references
+    //Variables.
     public GameObject MenuManager;
     public GameObject pageTemplate;
 
-    //assign the template parameters in the inspector for easy editing of values
+    //Assign the template parameters in the inspector for easy editing of values.
     [Help("These must contain the stated elements from the Template Page.", UnityEditor.MessageType.Warning)]
     [SerializeField] private TextMeshProUGUI tempPageNumber;
     [SerializeField] private TextMeshProUGUI tempPageTitle;
     [SerializeField] private TextMeshProUGUI tempPageDescription;
     [SerializeField] private Image tempPageImage;
 
-    //struct to allow multiple customiseable serialized objects in the inspector
-
+    //Struct to allow multiple customiseable serialized objects in the inspector.
     [Serializable]
     public struct Page
     {
@@ -27,7 +26,7 @@ public class pageSystem : MonoBehaviour
         [Help("Set up the contents of your page here. Add your objects which must be interacted with into the 'Moveable Task Objects' box.")]
         public int pageNumber;
         public string pageTitle;
-        [TextArea(5, 10)] public string pageInstructions; //textarea allows for bigger area to type
+        [TextArea(5, 10)] public string pageInstructions; //TextArea allows for bigger area to type the description.
         public Sprite pageImage;
         public GameObject[] moveableTaskObjects;
         public bool taskComplete;
@@ -36,24 +35,23 @@ public class pageSystem : MonoBehaviour
         public GameObject pageTemplate;
     }
 
-
-    //track the current page
+    //Track the current page.
     private int pageIndex;
 
-    //navigation buttons
+    //Navigation buttons.
     public Button prevBtn, nextBtn, homeBtn, finishBtn;
 
-    //pages list
+    //Pages List.
     [SerializeField] Page[] instructionPages;
 
     private TaskManager tasks;
 
-    // Start is called before the first frame update
+    // Start is called before the first frame update.
     void Start()
     {
         Debug.Log("<b><color=white>Number of Task Instructions Found: </color></b>" + instructionPages.Length);
 
-        //old way of doing things; keeping as reference (12/08 11:20)
+        //Old way of doing things; keeping as reference (12/08 11:20).
         #region "oldInstantiateCodeRef"
 
         //GameObject popPages;
@@ -87,6 +85,7 @@ public class pageSystem : MonoBehaviour
         finishBtn.GetComponent<BoxCollider>().enabled = false;
     }
 
+    //Returns the current page index.
     public Page returnCurrentPage()
     {
         return instructionPages[pageIndex];
@@ -94,14 +93,14 @@ public class pageSystem : MonoBehaviour
 
     private void OnEnable()
     {
-        //set the page to display the first page values (home page)
+        //Set the page to display the first page values (home page).
         tempPageNumber.text = instructionPages[0].pageNumber.ToString() + " of " + instructionPages.Length.ToString();
         tempPageTitle.text = instructionPages[0].pageTitle;
         tempPageDescription.text = instructionPages[0].pageInstructions;
         tempPageImage.sprite = instructionPages[0].pageImage;
     }
 
-    //using SetPage we can set the parameters to be correct for what page we need i.e. 'index'
+    //Using SetPage we can set the parameters to be correct for what page we need i.e. 'index'.
     private void SetPage(int index)
     {
         tempPageNumber.text = instructionPages[index].pageNumber.ToString() + " of " + instructionPages.Length.ToString();
@@ -112,17 +111,18 @@ public class pageSystem : MonoBehaviour
         pageIndex = index;
     }
 
+    //Public method to allow the page to go back one step.
     public void prevPage()
     {
         Debug.Log("Clicked 'Previous Page'.");
 
-        //if the array is 0, it's the home page, so cancel
+        //If the array is 0, it's the home page, so cancel.
         if (pageIndex == 0) return;
 
-        //lower the index by 1 
+        //Lower the index by 1.
         pageIndex--;
 
-        //if its 0 after lowering the index, make the button uninteractable
+        //If it's 0 after lowering the index, make the button uninteractable.
         if (pageIndex == 0)
         {
             prevBtn.interactable = false;
@@ -133,34 +133,35 @@ public class pageSystem : MonoBehaviour
             prevBtn.interactable = true;
         }
 
-        //set the page
+        //Set the page.
         SetPage(pageIndex);
     }
 
+    //Public method to allow the page to go forward one step.
     public void nextPage()
     {
         Debug.Log("Clicked 'Next Page'.");
 
-        //if the array is trying to look for a page higher than the pages set, it wont find it due to not existing, so cancel
+        //If the array is trying to look for a page higher than the pages set, it wont find it due to not existing, so cancel.
         if (pageIndex == instructionPages.Length - 1) return;
 
-        //if next is pressed, prev must become available and interactable
+        //If next is pressed, prev must become available and interactable.
         prevBtn.interactable = true;
 
-        //raise the index by 1
+        //Raise the index by 1.
         pageIndex++;
 
-        //check after index raised
+        //Check after index raised.
         if (pageIndex == instructionPages.Length - 1)
         {
-            //if its the last array, make the next button uninteractable
+            //If its the last array, make the next button uninteractable.
             nextBtn.interactable = false;
             nextBtn.GetComponent<BoxCollider>().enabled = false;
             finishBtn.interactable = true;
             finishBtn.GetComponent<BoxCollider>().enabled = true;
         }
 
-        //set the page
+        //Set the page.
         SetPage(pageIndex);
     }
 
@@ -168,13 +169,11 @@ public class pageSystem : MonoBehaviour
     {
         Debug.Log("Clicked 'Home Page'.");
 
-        //set the page to the home page value
+        //Set the page to the home page value.
         SetPage(0);
 
-        //reset index
+        //Reset index.
         pageIndex = 0;
         prevBtn.interactable = false;
-
-        
     }
 }

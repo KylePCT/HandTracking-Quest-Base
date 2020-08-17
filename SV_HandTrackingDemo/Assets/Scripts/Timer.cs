@@ -8,7 +8,7 @@ public class Timer : MonoBehaviour
 {
     private TextMeshProUGUI timerText;
     private float theTimer;
-    public float timerSpeed = .7f; //seems to be the closest to real time
+    public float timerSpeed = .7f; //.7f seems to be the closest to real time
     private bool timerStarted;
 
     private static float endTime;
@@ -23,6 +23,7 @@ public class Timer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Start the timer...
         if (timerStarted)
         {
             theTimer += Time.fixedDeltaTime * timerSpeed;
@@ -30,16 +31,19 @@ public class Timer : MonoBehaviour
             string minutes = Mathf.Floor((theTimer % 3600) / 60).ToString("00");
             string seconds = (theTimer % 60).ToString("00"); //% calculates remainder
 
+            //Set the text output.
             timerText.text = hours + ":" + minutes + ":" + seconds;
         }
     }
 
+    //If the timer is started, reset to 0 and start.
     public void timerStart()
     {
         timerStarted = true;
         theTimer = 0;
     }
 
+    //If the timer is stopped.
     public void timerEnd()
     {
         timerStarted = false;

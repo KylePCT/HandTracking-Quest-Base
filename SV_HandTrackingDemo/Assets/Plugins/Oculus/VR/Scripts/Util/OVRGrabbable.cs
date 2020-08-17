@@ -14,6 +14,8 @@ ANY KIND, either express or implied. See the License for the specific language g
 permissions and limitations under the License.
 ************************************************************************************/
 
+// Code edited by Kyle Tugwell of Sonovision UK.
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -43,12 +45,14 @@ public class OVRGrabbable : MonoBehaviour
     protected Collider m_grabbedCollider = null;
     protected OVRGrabber m_grabbedBy = null;
 
+    //Snappable Objects
     [Header("Snap Objects to Snap Points")]
     public bool isSnappable;
     public GameObject ghostGuide;
     public Material ghostMat;
     private bool guideEntered = false;
 
+    //Task Objects
     [Header("Drag 'PieceFinished' from MenuManager here.")]
     [Space(-10)]
     [Header("Use TaskComplete() to decide when this is called.")]
@@ -127,6 +131,7 @@ public class OVRGrabbable : MonoBehaviour
         get { return m_grabPoints; }
     }
 
+    //Set 'guide entered' when the grabbed object enters its guide's collision.
     private void OnTriggerEnter(Collider other)
     {
         if (ghostGuide)
@@ -152,13 +157,17 @@ public class OVRGrabbable : MonoBehaviour
         m_grabbedBy = hand;
         m_grabbedCollider = grabPoint;
 
+        //Only set to kinematic if it is requested.
         if (isKinematic)
         {
+            //Get the kinematic component.
             gameObject.GetComponent<Rigidbody>().isKinematic = true;
         }
 
+        //Only allow snapping if requested.
         if (isSnappable)
         {
+            //If the object is grabbed, show the guide.
             ghostGuide.SetActive(true);
         }
     }
@@ -174,18 +183,24 @@ public class OVRGrabbable : MonoBehaviour
         rb.angularVelocity = angularVelocity;
         m_grabbedBy = null;
 
+        //If the object can be snapped to a position, allow it to happen once it has entered its guide.
         if (isSnappable)
         {
             if (guideEntered && isTaskComplete == false)
             {
+                //Set the snapped object to the position of the guide.
                 transform.position = ghostGuide.transform.position;
                 transform.rotation = ghostGuide.transform.rotation;
 
+                //Allow another thing to be invoked.
                 TaskComplete();
+
+                //Remove grabbing functionality and the guide visual.
                 Destroy(GetComponent<OVRGrabbable>());
                 Destroy(ghostGuide);
             }
 
+            //If the object is not inside of the guide when let go, just turn it off.
             ghostGuide.SetActive(false);
         }
     }
@@ -210,6 +225,7 @@ public class OVRGrabbable : MonoBehaviour
     {
         m_grabbedKinematic = GetComponent<Rigidbody>().isKinematic;
 
+        //If the object isSnappable, set up the guide variables.
         if (isSnappable == true)
         {
             ghostGuide.GetComponent<Renderer>().material = ghostMat;
@@ -221,15 +237,17 @@ public class OVRGrabbable : MonoBehaviour
 
     void OnDestroy()
     {
+        //If something is being grabbed...
         if (m_grabbedBy != null)
         {
-            // Notify the hand to release destroyed grabbables
+            // Notify the hand to release destroyed grabbables.
             m_grabbedBy.ForceRelease(this);
         }
     }
 
     public void resetGrabPoints()
     {
+        //If there are no grab points...
         if (m_grabPoints.Length == 0)
         {
             // Get the collider from the grabbable
@@ -246,6 +264,7 @@ public class OVRGrabbable : MonoBehaviour
 
     public void TaskComplete()
     {
+        //Allow the object to run another method/script once the task is deemed complete.
         isTaskComplete = true;
         resetGrabPoints();
         objsWithTasks.Invoke();
