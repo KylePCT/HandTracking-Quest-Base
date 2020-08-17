@@ -87,8 +87,6 @@
     <Compile Include="Assets\Plugins\Oculus\Spatializer\editor\ONSPPropagationMaterialEditor.cs" />
     <Compile Include="Assets\Plugins\Oculus\Spatializer\editor\ONSPPropagationSerializationManager.cs" />
     <Compile Include="Assets\Plugins\Oculus\Spatializer\editor\ONSPReflectionCustomGUI.cs" />
-    <Compile Include="Assets\Plugins\SplineMesh\Scripts\Editor\SplineEditor.cs" />
-    <Compile Include="Assets\Plugins\SplineMesh\Scripts\Editor\SplineExtrusionEditor.cs" />
     <Reference Include="UnityEditor.TestRunner">
       <HintPath>C:/Users/KT/Desktop/SV_HandTrackingQuest/SV_HandTrackingQuestBase/SV_HandTrackingDemo/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>
     </Reference>
