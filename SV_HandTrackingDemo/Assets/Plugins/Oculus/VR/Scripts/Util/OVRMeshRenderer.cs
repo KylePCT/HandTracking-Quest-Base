@@ -65,6 +65,8 @@ public class OVRMeshRenderer : MonoBehaviour
 	public bool IsDataHighConfidence { get; private set; }
 	public bool ShouldUseSystemGestureMaterial { get; private set; }
 
+    public GameObject trackingFailedtxt;
+
 	private void Awake()
 	{
 		if (_dataProvider == null)
@@ -92,7 +94,11 @@ public class OVRMeshRenderer : MonoBehaviour
 		}
 
 		Initialize();
-	}
+
+        //Text for when the tracking fails.
+        trackingFailedtxt.GetComponent<TextMesh>();
+        trackingFailedtxt.SetActive(false);
+    }
 
 	private void Initialize()
 	{
@@ -121,9 +127,13 @@ public class OVRMeshRenderer : MonoBehaviour
 				_ovrMesh.Mesh.bindposes = bindPoses;
 				_skinnedMeshRenderer.bones = bones;
 				_skinnedMeshRenderer.updateWhenOffscreen = true;
+
+
 #if UNITY_EDITOR
 				_ovrSkeleton.ShouldUpdateBonePoses = true;
 #endif
+
+
 				IsInitialized = true;
 			}
 		}
@@ -135,7 +145,9 @@ public class OVRMeshRenderer : MonoBehaviour
 		IsDataHighConfidence = false;
 		ShouldUseSystemGestureMaterial = false;
 
-		if (IsInitialized)
+        trackingFailedtxt.SetActive(false);
+
+        if (IsInitialized)
 		{
 			bool shouldRender = false;
 
@@ -156,7 +168,8 @@ public class OVRMeshRenderer : MonoBehaviour
 				if (_skinnedMeshRenderer != null && _skinnedMeshRenderer.enabled != shouldRender)
 				{
 					_skinnedMeshRenderer.enabled = shouldRender;
-				}
+                    trackingFailedtxt.SetActive(!shouldRender);
+                }
 			}
 
 			if (_systemGestureBehavior == SystemGestureBehavior.SwapMaterial)

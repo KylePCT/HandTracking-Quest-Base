@@ -97,8 +97,11 @@ public class OVRSkeleton : MonoBehaviour
 	private GameObject _bonesGO;
 	private GameObject _bindPosesGO;
 	private GameObject _capsulesGO;
-    private GameObject obj_HandIndexTip;
-    private bool tipColliderActive = false;
+
+    private GameObject obj_LHandIndexTip;
+    private GameObject obj_RHandIndexTip;
+    private bool L_tipColliderActive = false;
+    private bool R_tipColliderActive = false;
 
     protected List<OVRBone> _bones;
 	private List<OVRBone> _bindPoses;
@@ -235,23 +238,48 @@ public class OVRSkeleton : MonoBehaviour
 				_bindPoses[i].Transform.SetParent(_bindPoses[_bones[i].ParentBoneIndex].Transform, false);
 			}
 
-            if (i == 20 && !tipColliderActive)
+            //If the 20th bone (Index Finger) is next to be instantiated, check for colliders and 
+            //generate them if they currently do not exist.
+            if ((i == 20 && L_tipColliderActive == false) || (i == 20 && R_tipColliderActive == false))
             {
-                //this is horribly inefficient but it works /shrug/
-                obj_HandIndexTip = GameObject.Find("RightControllerAnchor/OVRHandPrefab/Bones/Hand_Start/Hand_Index1/Hand_Index2/Hand_Index3/Hand_IndexTip");
+                //this is horribly inefficient but it works /shrug/.
+                //Find the Index Tips.
+                obj_LHandIndexTip = GameObject.Find("LeftControllerAnchor/OVRHandPrefab/Bones/Hand_Start/Hand_Index1/Hand_Index2/Hand_Index3/Hand_IndexTip");
+                obj_RHandIndexTip = GameObject.Find("RightControllerAnchor/OVRHandPrefab/Bones/Hand_Start/Hand_Index1/Hand_Index2/Hand_Index3/Hand_IndexTip");
 
-                var fingerTipCollider = new GameObject("fingerTip_Collider");
-                var tipCollider = fingerTipCollider.AddComponent<SphereCollider>();
-                fingerTipCollider.tag = "FingerTip";
-                fingerTipCollider.transform.position = obj_HandIndexTip.transform.position;
+                //Left tip collision.
+                var L_fingerTipCollider = new GameObject("L_fingerTip_Collider");
+                var L_tipCollider = L_fingerTipCollider.AddComponent<SphereCollider>();
 
-                fingerTipCollider.transform.SetParent(obj_HandIndexTip.transform);
+                //Class collision with tag 'FingerTip'.
+                L_fingerTipCollider.tag = "FingerTip";
 
-                tipCollider.radius = 0.02f;
-                tipCollider.isTrigger = true;
+                //Parent the collider to the tip so it moves with it.
+                L_fingerTipCollider.transform.position = obj_LHandIndexTip.transform.position;
+                L_fingerTipCollider.transform.SetParent(obj_LHandIndexTip.transform);
 
-                tipColliderActive = true;
-                Debug.Log("[OVRSkeleton] Tip collision added.");  
+                L_tipCollider.radius = 0.02f;
+                L_tipCollider.isTrigger = true;
+
+                L_tipColliderActive = true;
+
+                //Right tip collision.
+                var R_fingerTipCollider = new GameObject("R_fingerTip_Collider");
+                var R_tipCollider = R_fingerTipCollider.AddComponent<SphereCollider>();
+
+                //Class collision with tag 'FingerTip'.
+                R_fingerTipCollider.tag = "FingerTip";
+
+                //Parent the collider to the tip so it moves with it.
+                R_fingerTipCollider.transform.position = obj_RHandIndexTip.transform.position;
+                R_fingerTipCollider.transform.SetParent(obj_RHandIndexTip.transform);
+
+                R_tipCollider.radius = 0.02f;
+                R_tipCollider.isTrigger = true;
+
+                R_tipColliderActive = true;
+
+                Debug.Log("[OVRSkeleton] Left and right tip collision added.");  
 
             }
         }

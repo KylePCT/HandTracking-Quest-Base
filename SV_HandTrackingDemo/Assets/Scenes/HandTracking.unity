@@ -506,7 +506,7 @@ MonoBehaviour:
   grabBegin: 0.85
   grabEnd: 0.15
   m_parentHeldObject: 1
-  m_moveHandPosition: 0
+  m_moveHandPosition: 1
   m_gripTransform: {fileID: 378302746}
   m_grabVolumes:
   - {fileID: 378302750}
@@ -967,7 +967,7 @@ PrefabInstance:
     - target: {fileID: 3136320697427983724, guid: 94fef5df3183c824da0935af9c1f7993,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.9467
+      value: 1.275
       objectReference: {fileID: 0}
     - target: {fileID: 3136320697427983726, guid: 94fef5df3183c824da0935af9c1f7993,
         type: 3}
@@ -2339,7 +2339,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1901471802
 Transform:
   m_ObjectHideFlags: 0
@@ -2348,8 +2348,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1901471801}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.23947501, y: -1.037, z: 3.568}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 1}
+  m_LocalPosition: {x: 0.298, y: -2.685, z: 3.944}
+  m_LocalScale: {x: 0.0029756997, y: 0.0029756997, z: 0.29757}
   m_Children: []
   m_Father: {fileID: 2089499469}
   m_RootOrder: 0
@@ -2374,15 +2374,15 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1901471801}
-  m_Text: This is a UI test.
+  m_Text: "Hand tracking failed. \nPlease move your hand in-front of the sensor."
   m_OffsetZ: 0
-  m_CharacterSize: 1
+  m_CharacterSize: 14.8
   m_LineSpacing: 1
   m_Anchor: 1
   m_Alignment: 1
   m_TabSize: 4
   m_FontSize: 87
-  m_FontStyle: 0
+  m_FontStyle: 1
   m_RichText: 1
   m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
   m_Color:
@@ -2746,6 +2746,14 @@ PrefabInstance:
       propertyPath: objectB
       value: 
       objectReference: {fileID: 731963186}
+    - target: {fileID: 9372860642433044, guid: 8776865e8fb6a764e83db524d5fb155d, type: 3}
+      propertyPath: segmentLength
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 9372860642433044, guid: 8776865e8fb6a764e83db524d5fb155d, type: 3}
+      propertyPath: ropeSegLen
+      value: 0.005
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8776865e8fb6a764e83db524d5fb155d, type: 3}
 --- !u!1001 &4509932614774026670
