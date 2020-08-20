@@ -145,13 +145,11 @@ public class OVRMeshRenderer : MonoBehaviour
 		IsDataHighConfidence = false;
 		ShouldUseSystemGestureMaterial = false;
 
-        trackingFailedtxt.SetActive(false);
-
         if (IsInitialized)
 		{
 			bool shouldRender = false;
 
-			if (_dataProvider != null)
+            if (_dataProvider != null)
 			{
 				var data = _dataProvider.GetMeshRendererData();
 
