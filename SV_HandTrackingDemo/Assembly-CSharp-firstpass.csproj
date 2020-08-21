@@ -279,8 +279,14 @@
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/KT/Desktop/SV_HandTrackingQuest/SV_HandTrackingQuestBase/SV_HandTrackingDemo/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.XR.Interaction.Toolkit">
+      <HintPath>C:/Users/KT/Desktop/SV_HandTrackingQuest/SV_HandTrackingQuestBase/SV_HandTrackingDemo/Library/ScriptAssemblies/Unity.XR.Interaction.Toolkit.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.VSCode.Editor">
       <HintPath>C:/Users/KT/Desktop/SV_HandTrackingQuest/SV_HandTrackingQuestBase/SV_HandTrackingDemo/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.XR.Interaction.Toolkit.Editor">
+      <HintPath>C:/Users/KT/Desktop/SV_HandTrackingQuest/SV_HandTrackingQuestBase/SV_HandTrackingDemo/Library/ScriptAssemblies/Unity.XR.Interaction.Toolkit.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/KT/Desktop/SV_HandTrackingQuest/SV_HandTrackingQuestBase/SV_HandTrackingDemo/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
@@ -314,12 +320,6 @@
     </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>C:/Users/KT/Desktop/SV_HandTrackingQuest/SV_HandTrackingQuestBase/SV_HandTrackingDemo/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.XR.Interaction.Toolkit">
-      <HintPath>C:/Users/KT/Desktop/SV_HandTrackingQuest/SV_HandTrackingQuestBase/SV_HandTrackingDemo/Library/ScriptAssemblies/Unity.XR.Interaction.Toolkit.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.XR.Interaction.Toolkit.Editor">
-      <HintPath>C:/Users/KT/Desktop/SV_HandTrackingQuest/SV_HandTrackingQuestBase/SV_HandTrackingDemo/Library/ScriptAssemblies/Unity.XR.Interaction.Toolkit.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.13f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
